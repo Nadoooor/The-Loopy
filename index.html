@@ -16,11 +16,26 @@
 <body>
     <a-scene physics="driver: ammo; debug: true" background="color: #FAFAFA">
         <!-- camera -->
-        <a-entity camera="" wasd-controls="" look-controls="" position="0 1.5 0">
-            <a-box material="transparent: true; opacity: 1" ammo-body="type: kinematic" ammo-shape="type: box" ></a-box>
-            <a-entity raycaster="objects: .clickables" material="shader: flat; color: red" position="0 0 -0.5"  cursor="" geometry="primitive: circle; radius: 0.005"></a-entity>
+<a-entity camera="" wasd-controls="" look-controls="" position="0.09668515523034053 1.5 17.524167081822238" rotation="-5.385803274229738 4.354479242994262 0">
+            <a-box material="transparent: true" ammo-body="gravity: undefined undefined; type: kinematic" ammo-shape="type: box; halfExtents: 0.5 0.5 0.5; sphereRadius: NaN"></a-box>
+            <a-entity raycaster="objects: .clickables" material="shader: flat; color: red" position="0 0 -0.5" cursor="" geometry="primitive: circle; radius: 0.005"></a-entity>
 
         </a-entity>
+
+        </a-entity>
+
+        <a-assets>
+            <a-asset-item src="Portal.glb" id="Portal"></a-asset-item>
+            <a-asset-item src="INFO.glb" id="INFO"></a-asset-item>
+            <img src="Astro.png" id="Astro"></img>
+            <img src="SpookyWorld.png" id="Spooky"></img>
+            <img src="PuzzGrid.png" id="PuzzGrid"></img>
+            <img src="FoodWorld.png" id="Food"></img>
+            <img src="Galla.png" id="Galla"></img>            
+        </a-assets>
+
+
+
 
         <!-- light -->
 
@@ -60,11 +75,11 @@
         </a-entity>
 
         <!-- walls -->
-        <a-box position="-5 2.5 -7.5" ammo-body="type: static" ammo-shape="type: box"  rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
-        <a-box position="5 2.5 -7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
+        <a-box position="-5 2.5 7.5" ammo-body="type: static" ammo-shape="type: box"  rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
+        <a-box position="5 2.5 7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
 
 
-        <a-box position="0 2.5 7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="15 5 0.5" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
+        <a-box position="0 2.5 -7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="15 5 0.5" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
         <a-box position="-7.5 2.5 0" ammo-body="type: static" ammo-shape="type: box"  rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
         <a-box position="7.5 2.5 0"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
 
@@ -97,7 +112,38 @@
             <a-box scale="0.2 0.2 0.2" night class="clickables" position="-7.3 2 -.5">
                 <a-text color="black" scale="1.6 1.6 1.6" rotation="0 90 0" value="Night" align="center" position="0.5 0 0"></a-text>
             </a-box>
-         </a-entity>
+        </a-entity>
+
+        <!-- Portals -->
+        <a-entity gltf-model="#Portal" ammo-body="type: kinematic" ammo-shape="type: box; fit: manual; halfExtents: 1.5 1.5 0.2" animation-mixer scale="0.2 0.2 0.2" rotation="0 90 0" position="5 1.3 10">        
+            <a-circle material="src: #Food" scale="6 6 6" rotation="0 180 0" position="0 0 -0.3"></a-circle>
+            <a-circle material="src: #Food" scale="6 6 6" position="0 0 0.3"></a-circle>
+            <a-text value="FoodieWorld" align="center" position="0 11 0" rotation="0 180 0" scale="5 5 5"></a-text>
+        </a-entity>
+        <a-entity gltf-model="#Portal" ammo-body="type: kinematic" ammo-shape="type: box; fit: manual; halfExtents: 1.5 1.5 0.2" animation-mixer scale="0.2 0.2 0.2" rotation="0 90 0" position="5 2 18">
+            <a-circle material="src: #PuzzGrid" scale="6 6 6" rotation="0 180 0" position="0 0 -0.3"></a-circle>
+            <a-circle material="src: #PuzzGrid" scale="6 6 6" position="0 0 0.3"></a-circle>
+            <a-text value="PuzzGrid" align="center" position="0 11 0" rotation="0 180 0" scale="5 5 5"></a-text>
+        </a-entity>
+        <a-entity gltf-model="#Portal" ammo-body="type: kinematic" ammo-shape="type: box; fit: manual; halfExtents: 1.5 1.5 0.2" animation-mixer scale="0.2 0.2 0.2" rotation="0 90 0" position="-5 1.3 10">
+            <a-circle material="src: #Spooky" scale="6 6 6" rotation="0 180 0" position="0 0 -0.3"></a-circle>
+            <a-circle material="src: #Spooky" scale="6 6 6" position="0 0 0.3"></a-circle>
+            <a-text value="SpookyWorld" align="center" position="0 11 0" rotation="0 0 0" scale="5 5 5"></a-text>
+        </a-entity>
+        <a-entity gltf-model="#Portal" ammo-body="type: kinematic" ammo-shape="type: box; fit: manual; halfExtents: 1.5 1.5 0.2" animation-mixer scale="0.2 0.2 0.2" rotation="0 90 0" position="-5 1.3 18">
+            <a-circle material="src: #Galla" scale="6 6 6" rotation="0 180 0" position="0 0 -0.3"></a-circle>
+            <a-circle material="src: #Galla" scale="6 6 6" position="0 0 0.3"></a-circle>
+            <a-text value="GallaVR" align="center" position="0 11 0" rotation="0 0 0" scale="5 5 5"></a-text>
+        </a-entity>
+        <a-entity gltf-model="#Portal" ammo-body="type: kinematic" ammo-shape="type: box; fit: manual; halfExtents: 1.5 1.5 0.2" animation-mixer scale="0.2 0.2 0.2" rotation="0 0 0" position="0 1.3 22">
+            <a-circle material="src: #Astro" scale="6 6 6" rotation="0 180 0" position="0 0 -0.3"></a-circle>
+            <a-circle material="src: #Astro" scale="6 6 6" position="0 0 0.3"></a-circle>
+            <a-text value="AstroWorld" align="center" position="0 11 0" rotation="0 180 0" scale="5 5 5"></a-text>
+        </a-entity>
+
+
+        
+
 
     </a-scene>
 </body>
