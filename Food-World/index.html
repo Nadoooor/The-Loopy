@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie_World</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script> 
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+
+    <script src="grap.js"></script>
+    <script src="Spawn_Buttons.js"></script>
+</head>
+<body>
+  <a-scene physics="driver: ammo; debug: false" background="color: #FAFAFA">
+   <a-entity  look-controls wasd-controls="acceleration: 80; fly: false" rotation="0 0 0" id="cam" position="0 4 13" camera>
+            <a-box  ammo-body="type: kinematic" ammo-shape="type: box"></a-box>
+              <a-entity  id="curs" cursor="fuse: false"  raycaster="objects: .draggable" geometry="primitive: circle; radius: 0.005" position="0 0 -0.5" material="color: red; shader: flat">
+                <a-light id="light" position="0 1.56044 0.93299" light="decay: 0.55; intensity: 2; type: point"></a-light>
+          </a-entity>
+          </a-entity>
+    <a-entity environment="preset: forest"></a-entity>
+
+    <a-text value="Corissant" position="-0.9 5.6 3" scale="2 2 2"></a-text>   
+    <a-text value="Donut"  position="3.3 5.6 3" scale="2 2 2"></a-text>   
+    <a-text value="CupCake" position="7.1 5.6 3" scale="2 2 2"></a-text>   
+    <a-text value="Ice-Cream" position="11 5.6 3" scale="2 2 2"></a-text>   
+    <a-text value="Turkey" position="14.8 5.6 3" scale="2 2 2"></a-text>
+    
+    <a-text value="Fish" position="0.4 5.6 22.2" scale="2 2 2" rotation="0 180 0"></a-text>
+    <a-text value="Fried Potato" position="4.8 5.6 22.2" scale="2 2 2" rotation="0 180 0"></a-text>
+
+
+    <a-entity class="draggable" gltf-model="Croissant.glb" spawn="what: Croissant.glb; where: 0 4 4; scale: 0.2 0.2 0.2; offset: 0 0 0.2" ammo-body="type: static" ammo-shape="type: hull  ; offset: 0 0 0.4" rotation="90 0 0" scale="0.5 0.5 0.5" position="0 4 3"></a-entity>  
+    <a-entity class="draggable" gltf-model="Donut.glb" spawn="what: Donut.glb; where: 4 3.5 4"  class="draggable" scale="2 2 2" rotation="90 0 0" ammo-body="type: static" ammo-shape="type: hull  ; offset: 0 0 0" position="4 3.5 3"></a-entity>
+    <a-entity class="draggable" gltf-model="Cupcake.glb" spawn="what: Cupcake.glb; where: 8 3 4; scale: 1 1 1; offset:0 0.3 0  " ammo-body="type: static" ammo-shape="type: hull; offset: 0 0.6 0" scale="2 2 2" position="8 3 3"></a-entity>
+    <a-entity class="draggable" gltf-model="Ice Cream.glb" spawn="what: Ice Cream.glb; where: 12 3 3; scale: 1.5 1.5 1.5;offset: 0 0.5 0" ammo-body="type: static" ammo-shape="type: hull; offset: 0 0.6 0" scale="2 2 2" position="12 3 3"></a-entity>
+    <a-entity class="draggable" gltf-model="Turkey.glb" spawn="what: Turkey.glb; where: 15.5 3.5 4; scale: 1.5 1.5 1.5; offset: 0 0.3 0" scale="2.3 2.3 2.3" ammo-body="type: static" ammo-shape="type: hull  ; offset: 0 0.5 0" position="15.5 3.5 3" rotation="0 90 90"></a-entity>
+    <a-entity class="draggable" gltf-model="Fish.glb"  spawn="what: Fish.glb; where: 0 3.5 21.5; scale: 0.2 0.2 0.2; offset: 0 0 0" scale="0.3 0.3 0.3" animation-mixer ammo-body="type: static" ammo-shape="type: hull  ; offset: 0 0 0" position="0 3.5 22" rotation="0 90 0"></a-entity>
+    <a-entity class="draggable" gltf-model="Chips.glb" spawn="what: Chips.glb; where: 3.5 3 21.5; scale: 8 8 8;offset: 0 0.5 0" ammo-body="type: static" ammo-shape="type: hull; offset: 0 0.5 -0.2" scale="10 10 10" position="3.5 3 22"></a-entity>
+
+
+
+
+    <!-- floor -->
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="0 1 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="0 1 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="0 1 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="0 1 20" scale="5 0.5 5"></a-box>
+
+    <a-box material="src: floor.png"  ammo-body="type: static" ammo-shape="type: box" position="5 1 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png"  ammo-body="type: static" ammo-shape="type: box" position="5 1 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png"  ammo-body="type: static" ammo-shape="type: box" position="5 1 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png"  ammo-body="type: static" ammo-shape="type: box" position="5 1 20" scale="5 0.5 5"></a-box>
+
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="10 1 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="10 1 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="10 1 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="10 1 20" scale="5 0.5 5"></a-box>
+
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="15 1 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="15 1 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="15 1 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box" position="15 1 20" scale="5 0.5 5"></a-box>
+
+    <!-- walls -->
+<a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box;" position="7.5  4 22.6" scale="20  5.5 0.5"></a-box>  
+<a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box;" position="7.5  4 2.6" scale="20   5.5 0.5"></a-box>  
+<a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box;" position="17.5 4 12.6" scale="0.5 5.5 20"></a-box>  
+<a-box material="src: floor.png" ammo-body="type: static" ammo-shape="type: box;" position="-2.5 4 12.6" scale="0.5 5.5 20"></a-box> 
+
+    <!-- sealing -->
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="0 7 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="0 7 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="0 7 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="0 7 20" scale="5 0.5 5"></a-box>
+ 
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="5  7 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="5  7 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="5  7 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="5  7 20" scale="5 0.5 5"></a-box>
+
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="10 7 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="10 7 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="10 7 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="10 7 20" scale="5 0.5 5"></a-box>
+
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="15 7 5" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="15 7 10" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="15 7 15" scale="5 0.5 5"></a-box>
+    <a-box material="src: floor.png" ammo-shape="type: box" ammo-body="type: static" position="15 7 20" scale="5 0.5 5"></a-box>
+
+
+
+
+    </a-scene>
+  
+</body>
+</html>

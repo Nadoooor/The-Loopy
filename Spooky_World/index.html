@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spooky_World</title>
+             <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script> 
+ <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+            <script src="grap.js"></script>
+            <script src="Controlpanal.js"></script>
+</head>
+<body>
+    <a-scene obb-collider="showCollider: false;" id="skybox" fog="type: exponential; color: red; density: 0.2"  physics="driver: ammo; debug: false; paused: true;">
+      
+   
+        <a-assets>
+             <a-asset-item src="floor_material.glb" id="floor"></a-asset-item>
+            <a-asset-item src="damaged_wall.glb" id="wall"></a-asset-item>
+            <a-asset-item src="monster.glb" id="mon"></a-asset-item>
+            <a-asset-item src="creepy_teen_girl.glb" id="girl"></a-asset-item>
+            <a-asset-item src="curious_skeleton.glb" id="skele"></a-asset-item>
+            <a-asset-item src="halloween_pumpkin.glb" id="pum"></a-asset-item>
+            <a-asset-item src="halloween-character.glb" id="pl"></a-asset-item>
+            <a-asset-item src="mommy_long_legs_arachnophobia.glb" id="hug"></a-asset-item>
+            <a-asset-item src="spooky_house_halloween.glb" id="spo"></a-asset-item>
+            <a-asset-item src="human_mouth_detailed.glb" id="mouth"></a-asset-item>
+        </a-assets>
+
+          <a-entity  look-controls wasd-controls="acceleration: 25; fly: false" rotation="0 0 0" id="cam" position="0 2 13" camera>
+            <a-box  ammo-body="type: kinematic" ammo-shape="type: box"></a-box>
+              <a-entity  id="curs" cursor="fuse: false"  raycaster="objects: .draggable" geometry="primitive: circle; radius: 0.005" position="0 0 -0.5" material="color: red; shader: flat">
+                <a-light id="light" position="0 1.56044 0.93299" light="decay: 0.55; intensity: 2; type: point"></a-light>
+          </a-entity>
+          </a-entity>
+
+        <a-entity  environment="preset: starry; groundColor: #8f65f1; skyColor: #f20d5d"></a-entity></a-entity>
+        
+        <!-- floor -->
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="0 0.1 0"></a-entity>        
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="4 0.1 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="8 0.1 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="12 0.1 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="0 0.1 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="0 0.1 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="0 0.1 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="4 0.1 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="4 0.1 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="4 0.1 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="8 0.1 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="8 0.1 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="8 0.1 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="12 0.1 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="12 0.1 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" position="12 0.1 12"></a-entity>
+        <!-- slealing -->
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="0  4 0"></a-entity>        
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="4  4 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="8  4 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="12 4 0"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="0  4 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="0  4 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="0  4 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="4  4 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="4  4 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="4  4 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="8  4 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="8  4 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="8  4 12"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="12 4 4"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="12 4 8"></a-entity>
+        <a-entity gltf-model="#floor" ammo-body="type: static" ammo-shape="type: box" rotation="180 0 0" position="12 4 12"></a-entity>
+
+
+        <a-entity gltf-model="#wall" class="draggable" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" color="red" position="3 0 -2" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0"position="9 0 -2" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" position="3 0 14" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" position="9 0 14" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" position="-2 0 3" rotation="0 90 0" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" position="-2 0 9" rotation="0 90 0" scale="0.05 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#wall" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: 0 2 0" position="14 0 9" rotation="0 90 0" scale="0.05 0.05 0.05"></a-entity>
+        
+<a-entity gltf-model="#mon" animation-mixer="" position="12.18318 0.22331 12.47194" rotation="0 -134.48522663090196 0"></a-entity>      
+<a-entity gltf-model="#girl" animation-mixer="" position="0.0163 1 12.33311" rotation="0 146.468065958268 0"></a-entity><a-entity gltf-model="curious_skeleton.glb" animation-mixer="" position="9.60934 0 3.95602" rotation="0 -124.25907590340702 0"></a-entity>       
+ <a-entity gltf-model="#pum"  obb-collider grap class="draggable" ammo-body="type: dynamic; gravity: 0 0 0;" ammo-shape="type: hull; offset: 0 0.01 0.02;" position="0 1 0" scale="0.007 0.007 0.007"></a-entity>
+<a-entity gltf-model="#pl" ammo-body="gravity: 0 -1 0; linearDamping: 0.5; angularDamping: 0.5" ammo-shape="sphereRadius: NaN; offset: 0 2 0" animation-mixer="" position="-1.16039 0.00059 3.53648" rotation="0.06302535746439056 90 0"></a-entity>
+<a-entity gltf-model="#hug" scale="5 5 5" animation-mixer="" position="11.32297 -0.20858 7.92996" rotation="0 -90 0"></a-entity>        <a-entity gltf-model="#spo" ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: box; offset: -3 0 -2" scale="5 5 5" rotation="0 -90 0" position="14 0 3"></a-entity>
+        <a-entity gltf-model="#mouth" feed obb-collider ammo-body="type: static; gravity: 0 0 0;" ammo-shape="type: hull; offset: 0 -0.3 0"  scale="5 5 5" rotation="0 -90 0" position="10.4 1 2"></a-entity>
+        <!-- control_center -->
+          <!-- text -->
+          <a-text value="Music" rotation="180 0 180" position="5.3 2.5 13.4"></a-text>
+          <a-text value="+Light" rotation="180 0 180" position="6.3 2.5 13.4"></a-text>
+          <a-text value="-Light" rotation="180 0 180" position="7.3 2.5 13.4"></a-text>
+          <a-text value="+Pumpkin" rotation="180 0 180" position="6.5  1.5 13.4"></a-text>
+          <a-text id="feedtext" value="Feeded: 0" rotation="0 -96.60125721685193 0" position="9.23527 1.93286 1.52145"></a-text>        
+          
+          
+         <!-- buttons -->
+        <a-box  color="red" class="draggable" scale="0.2 0.2 0.2" position="5 2 13.5" music></a-box>
+        <a-box color="blue" class="draggable" scale="0.2 0.2 0.2" position="6 2 13.5" lightup></a-box>
+        <a-box  lightdown color="green" class="draggable" scale="0.2 0.2 0.2" position="7 2 13.5"></a-box>
+        <a-box  morepums color="purple" class="draggable" scale="0.2 0.2 0.2" position="6 1 13.5"></a-box>
+        
+       
+    </a-scene> 
+</body> 
+</html>
