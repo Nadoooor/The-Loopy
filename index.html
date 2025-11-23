@@ -9,46 +9,96 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+    <script src="Buttons.js"></script>
+    <script src="https://unpkg.com/aframe-extras.grid@3.13.1/dist/aframe-extras.grid.min.js"></script>
 
 </head>
 <body>
     <a-scene physics="driver: ammo; debug: true" background="color: #FAFAFA">
+        <!-- camera -->
+        <a-entity camera="" wasd-controls="" look-controls="" position="0 1.5 0">
+            <a-box material="transparent: true; opacity: 1" ammo-body="type: kinematic" ammo-shape="type: box" ></a-box>
+            <a-entity raycaster="objects: .clickables" material="shader: flat; color: red" position="0 0 -0.5"  cursor="" geometry="primitive: circle; radius: 0.005"></a-entity>
+
+        </a-entity>
+
+        <!-- light -->
+
+        <a-entity id="myLight" position="0 3 0" light="intensity: 2; type: point; decay: 2 "></a-entity>
+
+
         <!-- environment -->
         <a-entity environment="preset: moon"></a-entity>
+
+
         <!-- floor -->
         <a-entity>
-        <a-box material="src: image(1).png" position="0 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="0 0 -5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="0 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 -5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 -5" scale="5 0.5 5"></a-box>
-        </a-entity>
+        <a-box ammo-body="type: static" material="opacity: 0" ammo-shape="type: box"  position="0 0 0" scale="500 0.2 500"></a-box>
+        <a-box  position="0 -2 0" color="black" material="metalness: 0; roughness: 1; flatShading: true" scale="500 0.2 500"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="0 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="-5 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="5 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="0 0 -5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="0 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="5 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="5 0 -5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="-5 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png; roughness: 0.5" ammo-body="type: static" ammo-shape="type: box" position="-5 0 -5" scale="5 0.5 5"></a-box>
+        </a-entity> 
 
         <!-- sealing -->
         <a-entity position="0 5 0">
-        <a-box material="src: image(1).png" position="0 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 0" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="0 0 -5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="0 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="5 0 -5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 5" scale="5 0.5 5"></a-box>
-        <a-box material="src: image(1).png" position="-5 0 -5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="0 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="-5 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="5 0 0" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="0 0 -5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="0 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="5 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="5 0 -5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="-5 0 5" scale="5 0.5 5"></a-box>
+        <a-box material="src: image(1).png" ammo-body="type: static" ammo-shape="type: box" position="-5 0 -5" scale="5 0.5 5"></a-box>
         </a-entity>
 
         <!-- walls -->
-        <a-box position="0 2.5 -7.5" rotation="0 0 0" scale="15 5 0.5" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
-        <a-box position="0 2.5 7.5" rotation="0 0 0" scale="15 5 0.5" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
-        <a-box position="-7.5 2.5 0" rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
-        <a-box position="7.5 2.5 0" rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
+        <a-box position="-5 2.5 -7.5" ammo-body="type: static" ammo-shape="type: box"  rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
+        <a-box position="5 2.5 -7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="5 5 0.5" material="src: image(1).png; repeat: 1.5 2; side: double"></a-box>
+
+
+        <a-box position="0 2.5 7.5"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="15 5 0.5" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
+        <a-box position="-7.5 2.5 0" ammo-body="type: static" ammo-shape="type: box"  rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
+        <a-box position="7.5 2.5 0"  ammo-body="type: static" ammo-shape="type: box" rotation="0 0 0" scale="0.5 5 15" material="src: image(1).png; repeat: 5 2; side: double"></a-box>
+
+        <!-- playing with things -->
+        <a-box ammo-body="type: dynamic" ammo-shape="type: box"></a-box>
+        <a-cylinder ammo-body="type: dynamic" ammo-shape="type: cylinder"></a-cylinder>
+
+         <!-- control panal -->
+         <a-entity>
+            <a-box scale="0.2 0.2 0.2" light+ class="clickables" position="-7.3 2.5 0">
+                <a-text color="black" scale="2 2 2" rotation="0 90 0" value="+" align="center" position="0.5 0 0"></a-text>
+                <a-text color="white" scale="2 2 2" rotation="0 90 0" value="Light" align="center" position="0.5 -1 0"></a-text>
+            </a-box>
+            
+            <a-box scale="0.2 0.2 0.2" light- class="clickables" position="-7.3 2 0">
+                <a-text color="black" scale="2 2 2" rotation="0 90 0" value="-" align="center" position="0.5 0 0"></a-text>                
+            </a-box>
+
+            <a-box scale="0.2 0.2 0.2" music+ class="clickables" position="-7.3 2.5 .5">
+                <a-text color="black" scale="2 2 2" rotation="0 90 0" value="+" align="center" position="0.5 0 0"></a-text>
+                <a-text color="white" scale="2 2 2" rotation="0 90 0" value="Music" align="center" position="0.5 -1 0"></a-text>            
+            </a-box>
+            <a-box scale="0.2 0.2 0.2" music- class="clickables" position="-7.3 2 .5">
+                <a-text color="black" scale="2 2 2" rotation="0 90 0" value="-" align="center" position="0.5 0 0"></a-text>
+            </a-box>
+            
+            <a-box scale="0.2 0.2 0.2" day class="clickables" position="-7.3 2.5 -.5">
+                <a-text color="black" scale="2 2 2" rotation="0 90 0" value="Day" align="center" position="0.5 0 0"></a-text>
+            </a-box>
+            <a-box scale="0.2 0.2 0.2" night class="clickables" position="-7.3 2 -.5">
+                <a-text color="black" scale="1.6 1.6 1.6" rotation="0 90 0" value="Night" align="center" position="0.5 0 0"></a-text>
+            </a-box>
+         </a-entity>
 
     </a-scene>
-
-    
 </body>
 </html>
