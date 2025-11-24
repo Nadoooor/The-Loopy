@@ -1,28 +1,36 @@
-AFRAME.registerComponent('telethere', {
-    schema: {
-        
-    },
 
+AFRAME.registerComponent('telethere', {
     init: function () {
-        var n = 0;
+        count = 0;
         this.el.addEventListener('obbcollisionstarted', (e) => {
-            if (n == 0) {
-                n += 1;
-                return;
-            }
             console.log("teleporting...");
             const touched = e.detail.withEl;
-
-            if (touched.id == "food"){
+            const food = document.querySelector('#food');
+            const Astro = document.querySelector('#astro');
+            const spooky = document.querySelector('#spooky');
+            const Puzz = document.querySelector('#Puzz');
+            const Galla = document.querySelector('#galla');
+            if (count < 6){
+                count += 1;
+                return;
+            }
+            if (touched == food){
                 window.location.href = "/Food-World/index.html";
-            } else if (touched.id == "Astdro"){
-                window.location.href = "/Astro-World/index.html";
-            } else if (touched.id == "spooky"){
-                window.location.href = "/Spooky-World/index.html";
-            } else if (touched.id == "Puzz"){
+                console.log("teleport to food world");
+            } else if (touched == Astro){
+                window.location.href = "/AstroWorld/index.html";
+                console.log("teleport to astro world");
+            } else if (touched == spooky){
+                window.location.href = "/Spooky_World/index.html";
+                console.log("teleport to spooky world");
+            } else if (touched == Puzz){
                 window.location.href = "/PuzzGrid/index.html";
-            } else if (touched.id == "Galla"){
-                window.location.href = "GallaVR/index.html";
+                console.log("teleport to puzz world");
+            } else if (touched == Galla){
+                window.location.href = "/GallaVR/index.html";
+                console.log("teleport to galla world");
+            } else{
+                console.log("not touching anything");
             }
         });
     },
